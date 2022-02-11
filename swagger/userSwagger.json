@@ -1,0 +1,681 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "Node JS API Project for MongoDB",
+        "description": "Here user api document for mongodb",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:4040/api/v1/user",
+            "description": "Localhost base URL"
+        },
+        {
+            "url":"https"
+        }      
+
+    ],
+    "paths": {
+        "/insertData": {
+            "post": {
+                "tags": [
+                    "User CRUD Operation"
+                ],
+                "summary": "Insert User Data",
+                "description": "This api is used to insert data in mongodb",
+                "operationId": "insertData",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/user"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Data inserted successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "required": [
+                                        "data"
+                                    ],
+                                    "type": "object",
+                                    "properties": {
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "dob": {
+                                            "type": "string"
+                                        },
+                                        "gender": {
+                                            "type": "string"
+                                        },
+                                        "email": {
+                                            "type": "string"
+                                        },
+                                        "password": {
+                                            "type": "string"
+                                        },
+                                        "createdAt": {
+                                            "type": "string"
+                                        },
+                                        "updatedAt": {
+                                            "type": "string"
+                                        },
+                                        "token": {
+                                            "type": "string"
+                                        },
+                                        "_id": {
+                                            "type": "string"
+                                        },
+                                        "__v": {
+                                            "type": "number"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "msg": {
+                                            "type": "string"
+                                        },
+                                        "response": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/login": {
+            "post": {
+                "tags": [
+                    "User CRUD Operation"
+                ],
+                "summary": "User Login",
+                "description": "This api is used to login data in mongodb",
+                "operationId": "login",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/login"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "User login successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "required": [
+                                        "data"
+                                    ],
+                                    "type": "object",
+                                    "properties": {
+                                        "_id": {
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "dob": {
+                                            "type": "string"
+                                        },
+                                        "gender": {
+                                            "type": "string"
+                                        },
+                                        "email": {
+                                            "type": "string"
+                                        },
+                                        "password": {
+                                            "type": "string"
+                                        },
+                                        "createdAt": {
+                                            "type": "string"
+                                        },
+                                        "updatedAt": {
+                                            "type": "string"
+                                        },
+                                        "token": {
+                                            "type": "string"
+                                        },
+                                      
+                                        "__v": {
+                                            "type": "number"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "msg": {
+                                            "type": "string"
+                                        },
+                                        "response": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/findAllUser": {
+            "get": {
+                "tags": [
+                    "User CRUD Operation"
+                ],
+                "summary": "ALL USER LIST",
+                "description": "Here find all user",
+                "operationId": "getAllUser",
+                "responses": {
+                    "200": {
+                        "description": "Find all user succesfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "required": [
+                                        "data",
+                                        "statusCode"
+                                    ],
+                                    "properties": {
+                                        "statusCode": {
+                                            "type": "number"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "_id": {
+                                                        "type": "string",
+                                                        "example":"$2a$10$RDqtJ2gTD8zl5elhGqqPNu35XvujKt.azcK8zeQgE8azvlM7dg5S6"
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example":"abc"
+                                                    },
+                                                    "dob": {
+                                                        "type": "string",
+                                                        "example":"1992-07-04"
+                                                    },
+                                                    "gender": {
+                                                        "type": "string",
+                                                        "example":"female"
+                                                    },
+                                                    "email": {
+                                                        "type": "string",
+                                                        "example":"abc@gmail.com"
+                                                    },
+                                                    "password": {
+                                                        "type": "string",
+                                                        "example":"$2a$10$RDqtJ2gTD8zl5elhGqqPNu35XvujKt.azcK8zeQgE8azvlM7dg5S6"
+                                                    },
+                                                    "createdAt": {
+                                                        "type": "string",
+                                                        "example":"2019-02-17"
+                                                    },
+                                                    "updatedAt": {
+                                                        "type": "string",
+                                                        "example":"2020-06-09"
+                                                    },
+                                                    "token": {
+                                                        "type": "string",
+                                                        "example":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjFmZDA1YTY5MmZiMjgyZDQ3NjlhM2NhIiwiZW1haWxzIjoiYXNocmFtQGdtYWk7bC5jb20iLCJpYXQiOjE2NDM5NzIwOTksImV4cCI6MTY0Mzk3OTI5OX0.8EJmWCKfB38QVmIUi-cqaRxGP4KKV-h8FSY2IBmh-LQ"
+                                                    },
+                                                    
+                                                    "__v": {
+                                                        "type": "number",
+                                                        "example":"0"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "required": [
+                                        "msg",
+                                        "response"
+                                    ],
+                                    "properties": {
+                                        "msg": {
+                                            "type": "string"
+                                        },
+                                        "response": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/getUser/{id}": {
+            "get": {
+                "tags": [
+                    "User CRUD Operation"
+                ],
+                "summary": "Find One User by ID",
+                "description": "Find one user successfully",
+                "operationId": "getOneUse",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "required": [
+                                        "statuscode",
+                                        "data"
+                                    ],
+                                    "properties": {
+                                        "statusCode": {
+                                            "type": "number"
+                                        },
+                                        "data": {
+                                            "type": "object",
+                                            "properties": {
+                                                "_id": {
+                                                    "type": "string"
+                                                },
+                                                "name": {
+                                                    "type": "string"
+                                                },
+                                                "dob": {
+                                                    "type": "string"
+                                                },
+                                                "gender": {
+                                                    "type": "string"
+                                                },
+                                                "email": {
+                                                    "type": "string"
+                                                },
+                                                "password": {
+                                                    "type": "string"
+                                                },
+                                                "createdAt": {
+                                                    "type": "string"
+                                                },
+                                                "updatedAt": {
+                                                    "type": "string"
+                                                },
+                                                "token": {
+                                                    "type": "string"
+                                                },
+                                                "__v": {
+                                                    "type": "number"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Fount",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "required": [
+                                        "statusCode",
+                                        "msg"
+                                    ],
+                                    "type": "object",
+                                    "properties": {
+                                        "statusCode": {
+                                            "type": "number"
+                                        },
+                                        "msg": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type":"object",
+                                    "required":[
+                                        "statusCode",
+                                        "msg",
+                                        "rersponse"
+                                    ],
+                                    "properties": {
+                                        "statusCode": {
+                                            "type": "number"
+                                        },
+                                        "msg": {
+                                            "type": "string"
+                                        },
+                                        "response": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/updateUser/{id}": {
+            "put": {
+                "tags": [
+                    "User CRUD Operation"
+                ],
+                "summary": "Update One User by ID",
+                "description": "Update one user successfully",
+                "operationId": "updateUser",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/user"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "required": [
+                                        "statusCode",
+                                        "msg",
+                                        "data"
+                                    ],
+                                    "type": "object",
+                                    "properties": {
+                                        "statusCode": {
+                                            "type": "number"
+                                        },
+                                        "msg": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "type": "object",
+                                       
+                                        "properties": {
+                                            "acknowledged": {
+                                                "type": "boolean"
+                                            },
+                                            "modifiedCount": {
+                                                "type": "number"
+                                            },
+                                            "upsertedId": {
+                                                "type": "boolean"
+                                            },
+                                            "upsertedCount": {
+                                                "type": "number"
+                                            },
+                                            "matchedCount": {
+                                                "type": "number"
+                                            }
+                                        }
+                                    }
+                                }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Fount",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "required": [
+                                        "statusCode",
+                                        "msg"
+                                    ],
+                                    "type": "object",
+                                    "properties": {
+                                        "statusCode": {
+                                            "type": "number"
+                                        },
+                                        "msg": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "msg": {
+                                            "type": "string"
+                                        },
+                                        "response": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/deleteUser/{id}": {
+            "delete": {
+                "tags": [
+                    "User CRUD Operation"
+                ],
+                "summary": "Delete User by ID",
+                "description": "Delete user by particuler id",
+                "operationId": "deleteUser",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"OK",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                    "required":[
+                                        "statusCode",
+                                        "msg",
+                                        "data"
+                                    ],
+                                    "properties":{
+                                        "statusCode":{
+                                            "type":"number"
+                                        },
+                                        "msg":{
+                                            "type":"string"
+                                        },
+                                        "data":{
+                                            "type":"object",
+                                            "properties":{
+                                                "deleteCount":{
+                                                    "type":"number"
+                                                }
+                                            }
+                                        }
+                                    }
+                                  
+                                }
+                            }
+                        }
+                    },
+                    "404":{
+                        "description":"Not Found",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                    "required":[
+                                        "statusCode",
+                                        "msg"
+                                    ],
+                                    "properties":{
+                                        "statusCode":{
+                                            "type":"number"
+                                        },
+                                        "msg":{
+                                            "type":"string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type":"object",
+                                    "required":[
+                                        "statusCode",
+                                        "msg",
+                                        "rersponse"
+                                    ],
+                                    "properties": {
+                                        "statusCode": {
+                                            "type": "number"
+                                        },
+                                        "msg": {
+                                            "type": "string"
+                                        },
+                                        "response": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "user": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "example": "varsha"
+                    },
+                    "dob": {
+                        "type": "string",
+                        "example": "1997-09-06"
+                    },
+                    "gender": {
+                        "type": "string",
+                        "example": "female"
+                    },
+                    "email": {
+                        "type": "string",
+                        "example": "var@gmai;l.com"
+                    },
+                    "password": {
+                        "type": "string",
+                        "example": "var123"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "example": "2021-12-09"
+                    },
+                    "updatetAt": {
+                        "type": "string",
+                        "example": "2022-02-04"
+                    }
+                }
+            },
+            "login": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "example": "var@gmai;l.com"
+                    },
+                    "password": {
+                        "type": "string",
+                        "example": "var123"
+                    }
+                }
+            }
+        }
+    }
+}
